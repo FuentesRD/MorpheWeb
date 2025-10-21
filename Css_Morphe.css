@@ -1,0 +1,197 @@
+/* ========== Morphé – Variables y Estilos Base ========== */
+:root {
+  --morph-emerald: #147D4C;      /* Acento/CTA */
+  --morph-olive: #919E63;        /* Secundario */
+  --morph-dark-green: #3B5927;   /* Fondo/Texto oscuro */
+  --morph-light-bg: #ffffff;     /* Fondo claro */
+  --morph-text-gray: #4b5563;    /* Texto secundario */
+  --morph-contrast: #FFC700;     /* Énfasis */
+}
+
+body {
+  background-color: var(--morph-light-bg);
+  color: var(--morph-text-gray);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* ========== Utilidades Personalizadas ========== */
+
+/* Tipografías extra (Bootstrap ya incluye hasta bold) */
+.fw-extrabold { font-weight: 800 !important; }
+.fw-black { font-weight: 900 !important; }
+
+/* Helpers de color */
+.text-morph-dark { color: var(--morph-dark-green) !important; }
+.text-morph-emerald { color: var(--morph-emerald) !important; }
+.bg-morph-dark { background-color: var(--morph-dark-green) !important; }
+.bg-morph-emerald { background-color: var(--morph-emerald) !important; }
+.bg-morph-olive { background-color: var(--morph-olive) !important; }
+.bg-morph-contrast { background-color: var(--morph-contrast) !important; }
+
+/* Espaciado de secciones */
+.section-padding { padding: 5rem 0; }
+
+/* Radios de borde extra */
+.rounded-2xl { border-radius: 1.25rem !important; }
+.rounded-3xl { border-radius: 1.5rem !important; }
+
+/* Micro-animación al pasar el cursor */
+.hover-scale {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* ========== Componentes Personalizados ========== */
+
+/* Botones de la marca */
+.btn-emerald {
+  background-color: var(--morph-emerald);
+  color: #fff;
+}
+.btn-emerald:hover {
+  background-color: #0f5e39;
+  color: #fff;
+}
+.btn-contrast {
+  background-color: var(--morph-contrast);
+  color: var(--morph-dark-green);
+}
+.btn-contrast:hover {
+  background-color: #f0b800;
+  color: var(--morph-dark-green);
+}
+
+/* Sombra de la barra de navegación */
+.nav-shadow {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+/* Etiqueta de precio en Hero */
+.price-tag {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--morph-contrast);
+  color: var(--morph-dark-green);
+  font-weight: 900;
+  padding: .4rem .8rem;
+  border-radius: 999px;
+  transform: rotate(3deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
+  z-index: 2;
+}
+
+/* Tarjetas de producto */
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(20, 125, 76, .25);
+}
+.border-top-emerald { border-top: .5rem solid var(--morph-emerald) !important; }
+.border-top-olive { border-top: .5rem solid var(--morph-olive) !important; }
+.border-top-dark { border-top: .5rem solid var(--morph-dark-green) !important; }
+
+/* Badges "suaves" */
+.badge-soft {
+  font-weight: 700;
+  font-size: .7rem;
+  border-radius: 999px;
+  padding: .35rem .6rem;
+}
+
+/* Tarjetas oscuras en sección "Durabilidad" */
+.dark-card {
+  background: #1f2937; /* Similar a un gris oscuro */
+  border-bottom: 4px solid var(--morph-emerald);
+  color: #fff;
+}
+
+/* Visualizador modular */
+.modular-viz {
+  height: 260px;
+  border: 2px dashed var(--morph-olive);
+  background: #f3f4f6;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modular-viz-base {
+  width: 96px;
+  height: 192px;
+  background: var(--morph-dark-green);
+  border-radius: .75rem;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: .5rem;
+  transition: transform .4s ease-in-out;
+}
+
+.modular-viz-extra {
+  width: 192px;
+  height: 32px;
+  background: var(--morph-emerald);
+  border-radius: .5rem;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity .4s ease-in-out, transform .4s ease-in-out;
+  pointer-events: none; /* Evita que interfiera con el botón */
+}
+
+.modular-viz-btn {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+/* Estado activo del visualizador */
+.modular-viz.is-expanded .modular-viz-base {
+  transform: translateX(-40%);
+}
+.modular-viz.is-expanded .modular-viz-extra {
+  opacity: 1;
+  transform: translateX(40%);
+}
+
+/* ========== Estilos para el Carrusel de Kits ========== */
+
+/* Ajusta el color de las flechas de control del carrusel */
+#kitsCarousel .carousel-control-prev-icon,
+#kitsCarousel .carousel-control-next-icon {
+  background-color: var(--morph-dark-green); /* Usa tu color oscuro principal */
+  border-radius: 50%;
+  padding: 1.2rem;
+  background-size: 50% 50%;
+}
+
+/* Ajusta el color de los indicadores (puntos) */
+#kitsCarousel .carousel-indicators [data-bs-target] {
+  background-color: var(--morph-dark-green);
+  opacity: 0.5;
+}
+
+#kitsCarousel .carousel-indicators .active {
+  opacity: 1;
+}
+
+/* Oculta los controles en pantallas muy pequeñas para no estorbar */
+@media (max-width: 576px) {
+  #kitsCarousel .carousel-control-prev,
+  #kitsCarousel .carousel-control-next {
+    display: none;
+  }
+}
