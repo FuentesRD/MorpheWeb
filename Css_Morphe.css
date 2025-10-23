@@ -195,3 +195,16 @@ body {
     display: none;
   }
 }
+
+/* ========== Estilos para el Modal de Video ========== */
+.modal-dark-custom {
+  background-color: #1f2937; /* Mismo fondo que .dark-card */
+  color: #fff;
+  border: 1px solid var(--morph-emerald);
+}
+.modal-dark-custom .modal-header {
+  border-bottom: 1px solid var(--morph-emerald);
+}
+.modal-dark-custom .modal-body {
+  padding: 0; /* El video ocupará todo el espacio */
+}

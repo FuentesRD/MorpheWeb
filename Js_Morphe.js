@@ -10,15 +10,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+ const videoModalEl = document.getElementById('videoModal');
   const btnStressVideo = document.getElementById('btn-stress-video');
-  if (btnStressVideo) {
+  const videoPlayer = document.getElementById('stressVideoPlayer');
+
+  if (videoModalEl && btnStressVideo && videoPlayer) {
+    // 1. Crea una instancia del Modal de Bootstrap
+    const videoModal = new bootstrap.Modal(videoModalEl);
+
+    // 2. Asigna el evento de clic al botón para MOSTRAR el modal
     btnStressVideo.addEventListener('click', () => {
-      // Aquí podrías abrir un modal con el video en lugar de un console.log
-      console.log('Reproduciendo video de prueba de estrés...');
-      alert('Mostrando video de prueba de estrés (ver consola).');
+      videoModal.show();
+      // Opcional: inicia el video automáticamente al abrir
+       videoPlayer.play(); 
+    });
+
+    // 3. Asigna un evento para cuando el modal se OCULTE
+    videoModalEl.addEventListener('hidden.bs.modal', () => {
+      // Pausa el video y reinicia al segundo 0
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
     });
   }
-
+  // --- FIN DE MODAL DE VIDEO ---
+  
   const subscribeForm = document.getElementById('subscribe-form');
   if (subscribeForm) {
     subscribeForm.addEventListener('submit', (event) => {
@@ -58,5 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  
+
+
 
 });
